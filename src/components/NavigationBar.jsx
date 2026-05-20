@@ -46,7 +46,7 @@ function NavigationBar() {
             {
               navLinks.map(({name,link}) => (
 
-                <li className='text-xl font-bold pt-10 pl-10'>
+                <li className='text-xl font-bold pt-10 pl-10' onClick={() => setIsOpen(false)}>
                     <NavLink to={link} className={({isActive,pending}) => 
                               isActive ? "active" :
                               pending ? "pending" : ""
