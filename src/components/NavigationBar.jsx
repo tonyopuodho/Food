@@ -15,7 +15,7 @@ function NavigationBar() {
   const [isOpen,setIsOpen] = useState(false)
   return (
     <Fragment>
-        <div className='bg-amber-900 w-full h-[10vh] font-serif flex items-center'>
+        <div className='bg-amber-900 w-full h-[10vh] font-serif flex items-center z-10'>
         <div className='max-w-7xl md:w-[80%] w-full mx-auto px-2 flex justify-between items-center'>
           <h1 className='text-white text-4xl font-extrabold'>FoodRecipe</h1>
           {/* desktop navigation */}
@@ -41,7 +41,7 @@ function NavigationBar() {
         </div>
       </div>
       {/* mobile navigation */}
-      <div className='relative'>
+      <div className='relative z-9'>
         <ul  className={`text-white font-serif md:hidden block  inset-0 h-[100vh]  w-[60%] transition-all duration-300 ease-in absolute ${isOpen ? ' left-0' : 'left-[-100%]'}  bg-amber-900`}>
             {
               navLinks.map(({name,link}) => (

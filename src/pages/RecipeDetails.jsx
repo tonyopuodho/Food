@@ -11,7 +11,7 @@ function RecipeDetails() {
   },[])
   console.log(singleProduct)
   return (
-    <div className='py-10 bg-gray-100 h-full font-serif'>
+    <div className='py-10 bg-gray-100 h-[100vh] font-serif'>
       <div className='max-w-7xl md:w-[80%] mx-auto px-2 flex items-center'>
         {
            singleProduct.map((item) => (
@@ -24,7 +24,8 @@ function RecipeDetails() {
                   <h1 className='text-3xl font-extrabold text-gray-600'>{item.title}</h1>
                   <h3 className='text-2xl text-gray-400 font-semibold'>Publisher: {item.publisher}</h3>
                   <h3 className='text-2xl text-gray-400 font-semibold'>Servings: {item.servings}</h3>
-                  <h2 className='text-3xl font-extrabold text-gray-600 mt-3 mb-2'>Ingredients</h2>
+                  <button className='py-2 w-[50%] bg-amber-900 text-white font-bold cursor-pointer rounded-md mt-2'>Add to favorites</button>
+                  <h2 className='text-3xl font-extrabold text-gray-600 mt-3 mb-2'>Ingredients</h2>                  
                   <ul className='flex flex-col gap-3 pl-6 text-xl text-gray-600'>
                     {
                       item.ingredients.map((items) => (
