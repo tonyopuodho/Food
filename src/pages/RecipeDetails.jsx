@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../context/context'
 
 function RecipeDetails() {
-  const { productDetail,singleProduct,addToFavorites } = useContext(GlobalContext)
+  const { productDetail,singleProduct,addToFavorites,favorite} = useContext(GlobalContext)
   const { id } = useParams()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function RecipeDetails() {
                   <h1 className='text-3xl font-extrabold text-gray-600'>{item.title}</h1>
                   <h3 className='text-2xl text-gray-400 font-semibold'>Publisher: {item.publisher}</h3>
                   <h3 className='text-2xl text-gray-400 font-semibold'>Servings: {item.servings}</h3>
-                  <button onClick={() => addToFavorites(item)} className='py-2 w-[50%] bg-amber-900 text-white font-bold cursor-pointer rounded-md mt-2'>Add to favorites</button>
+                  <button disabled={singleProduct ? favorite.findIndex((items) => items.id === item.id) > -1: false} onClick={() => addToFavorites(item)} className='disabled:opacity-35 disabled:cursor-not-allowed py-2 w-[50%] bg-amber-900 text-white font-bold cursor-pointer rounded-md mt-2'>Add to favorites</button>
                   <h2 className='text-3xl font-extrabold text-gray-600 mt-3 mb-2'>Ingredients</h2>                  
                   <ul className='flex flex-col gap-3 pl-6 text-xl text-gray-600'>
                     {
