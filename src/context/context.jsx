@@ -7,7 +7,7 @@ export default function GlobalState({children}){
     const [searchParams,setSearchParams] = useState("")
     const [products,setProducts] = useState([])
     const [singleProduct,setSingleProduct] = useState([])
-    const [loading,setloading] = useState(true)
+    const [loading,setloading] = useState(false)
     async function productDetail(id) {
         try {
             const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}?key=53692461-12d5-4427-b225-ae5f8d7916f2`)

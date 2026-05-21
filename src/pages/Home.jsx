@@ -6,7 +6,7 @@ import { FaSpinner } from 'react-icons/fa'
 function Home() {
   const { searchParams,setSearchParams,handleSubmit,products ,setloading,loading} = useContext(GlobalContext)
   return (
-    <div className='bg-gray-100 font-serif w-full h-full h-[100vh] py-10'>
+    <div className= {`bg-gray-100 font-serif w-full py-10 ${products.length > 0 ? 'h-full' : 'h-[100vh]'}`}>
       <div className='max-w-7xl md:w-[80%] mx-auto px-2 w-full'>
         <form onSubmit={handleSubmit} className='flex md:flex-row  w-full gap-2 flex-col justify-center items-center'>
           <input type="text"

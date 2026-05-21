@@ -11,11 +11,11 @@ function RecipeDetails() {
   },[])
   console.log(singleProduct)
   return (
-    <div className='py-10 bg-gray-100 h-[100vh] font-serif'>
+    <div className='py-10  h-[100vh] font-serif'>
       <div className='max-w-7xl md:w-[80%] mx-auto px-2 flex items-center'>
         {
            singleProduct.map((item) => (
-            <div className='flex flex-col p-2 w-full'>
+            <div className='flex flex-col p-2 w-full h-[100%]'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full'>
                 <div className='w-full md:w-[100%] h-[70vh] bg-amber-600'>
                   <img src={item.image_url} alt="" className='w-full h-full object-cover' />
