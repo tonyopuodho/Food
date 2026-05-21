@@ -11,20 +11,21 @@ export default function GlobalState({children}){
     const [favorite,setFavorite] = useState([])
 
     function addToFavorites(ingredient){
-        let copyIngredients = [...singleProduct]
+        let copyIngredients = [...favorite]
         const findExistingproduct = copyIngredients.findIndex((item) => item.id === ingredient.id)
         if (findExistingproduct === -1) {
-            copyIngredients.push({
-                ...ingredient,
-                quantity: 1
-            })
+            copyIngredients.push({...ingredient})
         } else {
-            console.log("Item already added")
+           console.log("")
         }
 
         setFavorite(copyIngredients)
         localStorage.setItem("ingredients",JSON.stringify(copyIngredients))
     }
+
+    useEffect(() => {
+        setFavorite(JSON.parse(localStorage.getItem("ingredients")) || [])
+    },[])
 
     async function productDetail(id) {
         try {
@@ -55,5 +56,5 @@ export default function GlobalState({children}){
          console.log(error)
        }
     }
-    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading,addToFavorites}}>{children}</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading,addToFavorites,favorite}}>{children}</GlobalContext.Provider>
 }
