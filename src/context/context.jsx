@@ -8,6 +8,24 @@ export default function GlobalState({children}){
     const [products,setProducts] = useState([])
     const [singleProduct,setSingleProduct] = useState([])
     const [loading,setloading] = useState(false)
+    const [favorite,setFavorite] = useState([])
+
+    function addToFavorites(ingredient){
+        let copyIngredients = [...singleProduct]
+        const findExistingproduct = copyIngredients.findIndex((item) => item.id === ingredient.id)
+        if (findExistingproduct === -1) {
+            copyIngredients.push({
+                ...ingredient,
+                quantity: 1
+            })
+        } else {
+            console.log("Item already added")
+        }
+
+        setFavorite(copyIngredients)
+        localStorage.setItem("ingredients",JSON.stringify(copyIngredients))
+    }
+
     async function productDetail(id) {
         try {
             const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}?key=53692461-12d5-4427-b225-ae5f8d7916f2`)
@@ -37,5 +55,5 @@ export default function GlobalState({children}){
          console.log(error)
        }
     }
-    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading}}>{children}</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading,addToFavorites}}>{children}</GlobalContext.Provider>
 }
