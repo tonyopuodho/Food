@@ -23,6 +23,17 @@ export default function GlobalState({children}){
         localStorage.setItem("ingredients",JSON.stringify(copyIngredients))
     }
 
+    function removeFromFavorite(ingredient,isFullyRemoved){
+       let copyIngredients = [...favorite]
+       const findExistingproduct = copyIngredients.findIndex((item) => item.id === ingredient.id)
+
+       if (isFullyRemoved) {
+        copyIngredients.splice(findExistingproduct,1)
+       }
+        setFavorite(copyIngredients)
+        localStorage.setItem("ingredients",JSON.stringify(copyIngredients))
+    }
+
     useEffect(() => {
         setFavorite(JSON.parse(localStorage.getItem("ingredients")) || [])
     },[])
@@ -56,5 +67,5 @@ export default function GlobalState({children}){
          console.log(error)
        }
     }
-    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading,addToFavorites,favorite}}>{children}</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading,addToFavorites,favorite,removeFromFavorite}}>{children}</GlobalContext.Provider>
 }

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { GlobalContext } from '../context/context'
 
 function FavoriteCard({item}) {
+    const {removeFromFavorite} = useContext(GlobalContext)
   return (
      <div className='p-2 relative  bg-white rounded-sm shadow-md font-serif  w-full'>
         <div className='w-full h-40'>
@@ -12,7 +15,7 @@ function FavoriteCard({item}) {
              <Link to={`/recipeDetails/${item.id}`}>
              <button className='py-2 text-xl bg-amber-900 rounded-md mt-2 font-bold cursor-pointer w-full text-white'>view recipe</button>
              </Link> 
-            
+             <button onClick={() => removeFromFavorite(item,true)} className='py-2 text-xl bg-amber-900 rounded-md mt-2 font-bold cursor-pointer w-full text-white'>remove recipe</button>            
         </div>
     </div>
   )

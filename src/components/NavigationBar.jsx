@@ -1,6 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 import { Link, NavLink } from 'react-router-dom'
+import { GlobalContext } from '../context/context'
+import { FaHeart } from 'react-icons/fa'
 
 function NavigationBar() {
   const navLinks = [
@@ -13,6 +15,7 @@ function NavigationBar() {
     }
   ]
   const [isOpen,setIsOpen] = useState(false)
+  const { favorite } = useContext(GlobalContext)
   return (
     <Fragment>
         <div className='bg-amber-900 w-full h-[10vh] font-serif flex items-center z-10'>
