@@ -7,7 +7,7 @@ export default function GlobalState({children}){
     const [searchParams,setSearchParams] = useState("")
     const [products,setProducts] = useState([])
     const [singleProduct,setSingleProduct] = useState([])
-
+    const [loading,setloading] = useState(true)
     async function productDetail(id) {
         try {
             const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}?key=53692461-12d5-4427-b225-ae5f8d7916f2`)
@@ -30,10 +30,12 @@ export default function GlobalState({children}){
             
             if (apiResponse?.data.recipes){
                 setProducts(apiResponse?.data.recipes)
+                setloading(false)
             }
        } catch (error) {
+         setloading(false)
          console.log(error)
        }
     }
-    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct}}>{children}</GlobalContext.Provider>
+    return <GlobalContext.Provider value={{searchParams,setSearchParams,handleSubmit,products,productDetail,singleProduct, setloading,loading}}>{children}</GlobalContext.Provider>
 }
