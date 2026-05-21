@@ -4,7 +4,6 @@ import ProductCard from '../components/ProductCard'
 
 function Home() {
   const { searchParams,setSearchParams,handleSubmit,products } = useContext(GlobalContext)
-  console.log(products)
   return (
     <div className='bg-gray-100 font-serif w-full h-[100vh] py-10'>
       <div className='max-w-7xl md:w-[80%] mx-auto px-2 w-full'>

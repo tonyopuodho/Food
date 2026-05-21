@@ -10,21 +10,22 @@ export default function GlobalState({children}){
 
     async function productDetail(id) {
         try {
-            const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}?key=76bf349e-c0b1-49c6-b375-686b22c6dfe1`)
+            const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}?key=53692461-12d5-4427-b225-ae5f8d7916f2`)
             const apiResponse = await apiRequest.json()
 
             if (apiResponse?.data.recipe) {
-                setSingleProduct(apiResponse?.data.recipe)
+                setSingleProduct([apiResponse?.data.recipe])
             }           
         } catch (error) {
             console.log(error)
         }
 
     }
+
     async function handleSubmit(event) {
         event.preventDefault()
        try {        
-            const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes?search=${searchParams}&key=76bf349e-c0b1-49c6-b375-686b22c6dfe1`)
+            const apiRequest = await fetch(`https://forkify-api.jonas.io/api/v2/recipes?search=${searchParams}&key=53692461-12d5-4427-b225-ae5f8d7916f2`)
             const apiResponse = await apiRequest.json()
             
             if (apiResponse?.data.recipes){
