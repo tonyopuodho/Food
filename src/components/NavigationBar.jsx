@@ -12,6 +12,9 @@ function NavigationBar() {
     },{
       name:"Favorites",
       link:"favorites"
+    },{
+      name:"Categories",
+      link:"categories"
     }
   ]
   const [isOpen,setIsOpen] = useState(false)
